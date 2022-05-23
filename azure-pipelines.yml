@@ -1,0 +1,31 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerHub'
+    repository: 'estevanmarc/front_blocktime_trancking'
+    command: 'buildAndPush'
+    Dockerfile: './Dockerfile'
+    buildContext: '.'
+    tags: |
+      $(Build.BuildId)
+      latest 
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students(1)(54207527-c9d6-4896-a043-787256c6902a)'
+    appType: 'webAppContainer'
+    WebAppName: 'blocktime-tracking'
+    DockerNamespace: 'estevanmarc'
+    DockerRepository: 'front_blocktime_trancking'
+    DockerImageTag: '$(Build.BuildId)'
