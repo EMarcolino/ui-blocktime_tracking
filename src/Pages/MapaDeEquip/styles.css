@@ -162,7 +162,7 @@ main{
     margin-right: 10vw;
     display: flex;
     justify-content: space-between;
-    height: 79vh;
+    height: 80.2vh;
 }
 
 .partFoto{
@@ -210,17 +210,17 @@ footer{
     background-color: #00659F;
     display: flex;
     justify-content: center;
-    height: 72px;
+    height: 63px;
 }
 
 .LogoFooter img {
-    width: 72.45px;
-    height: 61.24px;
+    width: 50.45px;
+    height: 39.24px;
 }
 
 .LogoFooter{
     display: flex;
-    width: 191.45px;
+    width: 155.45px;
     justify-content: space-between;
     align-items: center;
 }
@@ -229,7 +229,7 @@ footer{
     color: white;
     font-family: 'Montserrat', sans-serif;
     display: flex;
-    font-size: 18px;
+    font-size: 15px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
@@ -241,7 +241,7 @@ footer{
 }
 .BackgroundMap{
     width: 840px;
-    height: 400px;
+    height: 440px;
     background-color: white;
     display: flex;
     align-items: center;
@@ -367,7 +367,7 @@ header{
   }
 
 footer{
-    margin-top: 10px;
+    margin-top: 50px;
     width: 100vw;
 }
 

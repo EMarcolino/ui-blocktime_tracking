@@ -48,7 +48,7 @@ export default function Empresas() {
         <div>
             <Header />
             <div className='div-container'>
-                    <MenuLateral className="tst">
+                    <MenuLateral>
 
                     </MenuLateral>
                 <main className='main-content'>
