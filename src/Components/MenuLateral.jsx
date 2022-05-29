@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
 
 export default function MenuLateral() {
   return (
-    <div>
         <aside id="mn" className="PainelAdmin">
             <div className="PrinAside">
                 <div className="partcima">
@@ -53,7 +52,6 @@ export default function MenuLateral() {
                 </nav>
             </div>
         </aside>
-    </div>
   );
 }
 

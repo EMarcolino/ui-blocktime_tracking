@@ -1,11 +1,23 @@
-*{
+* {
   padding: 0%;
   margin: 0%;
   font-family: 'Montserrat';
 }
 
-.tst{
+.tst {
   height: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+#editar {
+  margin-right: 20px;
+}
+
+td {
+  text-align: center;
 }
 
 .main-content {
@@ -17,23 +29,28 @@
   height: 100%;
   margin: 30px;
 }
+
 .div-container {
   display: flex;
   align-items: center;
   width: 100%;
   height: 80.2vh;
 }
+
 .sec-new-company {
-    width: 100%;
+  width: 100%;
 }
+
 .div-title {
-    display: flex;
-    justify-content: center;
-    margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
 }
+
 .title {
-    font-size: 50px;
+  font-size: 50px;
 }
+
 .div-sheare-new-company {
   display: flex;
   align-items: center;
@@ -41,11 +58,13 @@
   width: 90%;
   margin: 3% 5% 0% 5%;
 }
-.div-input{
+
+.div-input {
   height: 45px;
   width: 400px;
   display: flex;
 }
+
 .input-pesq {
   color: #C4C4C4;
   font-size: 18px;
@@ -58,6 +77,7 @@
   border-radius: 5px;
   margin-right: 10%;
 }
+
 .btn {
   color: #ffffff;
   font-weight: bold;
@@ -72,9 +92,11 @@
   height: 50px;
   margin-left: 10%;
 }
-.img-btn{
+
+.img-btn {
   background-color: #ffffff;
 }
+
 .sec-list {
   background-color: #ffffff;
   align-items: flex-start;
@@ -86,10 +108,12 @@
   height: auto;
   margin: 3% 5% 5% 5%;
 }
+
 .div-list {
   background-color: #ffffff;
   width: 100%;
 }
+
 .table-list {
   display: flex;
   flex-direction: column;
@@ -97,39 +121,48 @@
   width: 100%;
   white-space: nowrap;
 }
+
 .s {
   width: 100%;
   display: table;
 }
+
 .i {
-  box-shadow: 3px 3px #C4C4C4;  
+  box-shadow: 3px 3px #C4C4C4;
 }
+
 .cabec-empresa {
   margin: 0%;
-  width: 20px;
   height: 45px;
   font-size: 20px;
   border-right: 1px solid #C4C4C4;
 }
+
 .ver-map {
   border-right: none;
 }
-.lid { 
+
+
+.lid {
   width: 95%;
 }
+
 .tabela-lista-corpo {
   font-size: 14px;
 }
+
 .test {
   width: 100%;
   font-size: 14px;
   border-bottom: 1px solid #C4C4C4;
   margin: 3% 0% 0% 0%;
 }
+
 .container-pagination {
-    background-color: #db4649;
-    display: grid;
-    grid-template-columns: 'repeat(3, 1fr)';
-    width: 50%;
-    height: 5%;
+  background-color: #db4649;
+  display: grid;
+  grid-template-columns: 'repeat(3, 1fr)';
+  width: 50%;
+  height: 5%;
 }
+

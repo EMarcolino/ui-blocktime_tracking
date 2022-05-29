@@ -20,7 +20,11 @@ const routing = (
 <BrowserRouter >
     <div>
         <Routes >
-            <Route exact path="/"
+        <Route exact path="/"
+            element={< Navigate to="/Login"
+                    replace />}
+            />
+            <Route path="/Login"
                 element={< Login />}
             /> 
             <Route path="/MapaEquipamento"

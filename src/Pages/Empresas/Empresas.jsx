@@ -1,56 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import "../Empresas/Empresas.css"
 import MenuLateral from "../../Components/MenuLateral";
+import Modal from '../../Components/Modal';
+import verMapa from "../Assets/verMapa.svg";
+import deletar from "../Assets/Excluir.svg";
+import Editar from "../Assets/Editar.svg";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 //import MaisUm from "../../Pages/Assets/MaisUm.svg";
 
 
 export default function Empresas() {
-    const [ListarEmpresas, setListarEmpresas] = useState([
-        { idHostGroup: 1, hostname: 'SENAI-1', contato: '5555-5555', lat: '', log: '' },
-        { idHostGroup: 2, hostname: 'SENAI-2', contato: '5555-5555', lat: '', log: '' }
-    ]);
 
-    //const [ isLoading, setIsLoading ] = useState( false );
-    // const [ pages, fetchPages ] = usePages[3]; 
-    // const [ actualPage, setActualPage] = usePagination();
+    const [ListaEmpresas, atualizaListaEmpresas] = useState([])
+    const [nomeEmpresa, atualizaNomeEmpresa] = useState('')
+    const [nomeEmpresaCadastrar, atualizaCadastro] = useState('')
+    const [modalOpen, setModalOpen] = useState(false);
 
+    function listarEmpresas() {
+        axios('https://api-blocktimetracking.azurewebsites.net/api/Empresas', {
+        }).then(resposta => {
+            if (resposta.status === 200) {
+                atualizaListaEmpresas(resposta.data)
+            }
+        })
+            .catch(erro => console.log(erro));
 
-    function buscarEmpresas() {
-        axios(ListarEmpresas)
-            // setIsLoading( true );
-            // // Faz a chamada para a API usando axios
-            // axios('http://localhost:5000/api/empresas', {
-            //     headers : {
-            //         'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
-            //     }
-            // })
+    }
 
-            // Caso a resposta da requisição retorne um status code 200
-            .then(response => {
-                if (response.status === 200) {
-                    // Chama a função que atualiza o state listaTiposUsuarios
-                    setListarEmpresas(response.data);
-                    // setIsLoading( false );
-                };
-            })
+    useEffect(listarEmpresas, [])
 
-            // Mostra no console do navegador
-            .catch(error => console.log(error));
-    };
-
-    // useEffect( ListarEmpresas, [])
+    console.log(ListaEmpresas)
 
     return (
         <div>
             <Header />
             <div className='div-container'>
-                    <MenuLateral>
+                <MenuLateral className="altura">
 
-                    </MenuLateral>
+                </MenuLateral>
                 <main className='main-content'>
                     <section className='sec-new-company'>
                         <div className='div-title'>
@@ -61,10 +50,7 @@ export default function Empresas() {
                             <div className='div-input'>
                                 <input className='input-pesq' type="text" placeholder='Pesquisar' />
                             </div>
-                            <button className='btn'>
-                                {/* <img className='img-btn' src={MaisUm} alt="" /> */}
-                                Nova Empresa
-                            </button>
+                            <Modal/>
                         </div>
                     </section>
 
@@ -72,34 +58,34 @@ export default function Empresas() {
                         <div className="div-list">
                             <div className='table-list'>
                                 <div className='s'>
-                                    <tr className='i'>
-                                        <th className='cabec-empresa'>Nome</th>
-                                        {/* <th className='cabec-empresa'>Contato</th> */}
-                                        <th className='cabec-empresa'>Editar</th>
-                                        <th className='cabec-empresa ver-map'>Ver no mapa</th>
-                                    </tr>
+                                    <table>
+                                        <thead>
+                                            <tr className='i'>
+                                                <th className='cabec-empresa'>Nome</th>
+                                                <th className='cabec-empresa'>Editar Empresa</th>
+                                                <th className='cabec-empresa ver-map' id='teste'>Ver no Mapa</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                ListaEmpresas.map((empresa) => {
+                                                    return (
+                                                        <tr key={empresa.idEmpresa}>
+                                                            <td className='essss'>{empresa.nomeEmpresa}</td>
+                                                            <td id='tdImagem'><img src={Editar} id="editar" /><img src={deletar} /></td>
+                                                            <td className='tdImagem'><img src={verMapa} /></td>
+                                                        </tr>
+                                                    );
+                                                })
+                                            }
+                                        </tbody>
+                                    </table>
+
                                 </div>
 
                                 <div className='lid '>
                                     <div className='tabela-lista-corpo '>
-                                        {/* <h3>Olá-2</h3> */}
-                                        {
-                                            ListarEmpresas.map((empresa) => {
-                                                return (
-                                                    <div className='test' key={empresa.idEmpresa}>
-                                                        <div className='essss'>{empresa.hostname}</div>
-                                                        {/* <div>{empresa.contato}</div> */}
-                                                        {/* <td>
-                                                                <img src="" alt="" />
-                                                                <img src="" alt="" />
-                                                            </td>
-                                                            <td>
-                                                                <img src="" alt="" />
-                                                            </td>                                                         */}
-                                                    </div>
-                                                );
-                                            })
-                                        }
+
                                     </div>
                                 </div>
                                 <div className='container-pagination'>
@@ -109,7 +95,9 @@ export default function Empresas() {
                     </section>
                 </main>
             </div>
+            
             <Footer />
-        </div>
-    )
+
+
+        </div>)
 };
