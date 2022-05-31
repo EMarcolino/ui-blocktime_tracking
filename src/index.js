@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 import './index.css';
-
+import Modal from './Components/Modal';
 import Login from '../src/Pages/Login/Login.jsx';
 import NotFound from './Pages/NotFound/NotFound'
 import ListarEquipamentos from './Pages/ListarEquipamentos/ListarEquipamentos';
@@ -24,7 +24,7 @@ const routing = (
             element={< Navigate to="/Login"
                     replace />}
             />
-            <Route path="/Login"
+            <Route path="/Modal"
                 element={< Login />}
             /> 
             <Route path="/MapaEquipamento"

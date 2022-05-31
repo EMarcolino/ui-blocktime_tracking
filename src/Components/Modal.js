@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Modal.css";
 import axios from "axios";
 
+
 export default function Modal() {
     const [modal, setModal] = useState(false);
     const [nomeEmpresa, atualizaNomeEmpresa] = useState('')
@@ -18,9 +19,8 @@ export default function Modal() {
     }
 
     function Cadastrar(evento) {
-
         evento.preventDefault();
-        axios.post('https://api-blocktimetracking.azurewebsites.net/Cadastrar/' + nomeEmpresa, {
+        axios.post('https://api-blocktimetracking.azurewebsites.net/Cadastrar/'.concat(nomeEmpresa), {
         }, {
         })
             .then(resposta => {
@@ -31,7 +31,6 @@ export default function Modal() {
             })
             .catch(erro => console.log(erro), setInterval(() => {
             }, 500000));
-
     }
 
     return (
