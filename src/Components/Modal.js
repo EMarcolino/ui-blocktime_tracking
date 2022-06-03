@@ -31,11 +31,6 @@ export default function Modal() {
             })
             .catch(erro => console.log(erro), setInterval(() => {
             }, 500000));
-<<<<<<< HEAD
-
-            return erro
-=======
->>>>>>> 18592b7f691eef9dec4c3348073daa020405a8f5
     }
 
     return (

@@ -8,10 +8,7 @@ import {
 } from 'react-router-dom';
 
 import './index.css';
-<<<<<<< HEAD
-=======
 import Modal from './Components/Modal';
->>>>>>> 18592b7f691eef9dec4c3348073daa020405a8f5
 import Login from '../src/Pages/Login/Login.jsx';
 import NotFound from './Pages/NotFound/NotFound'
 import ListarEquipamentos from './Pages/ListarEquipamentos/ListarEquipamentos';
