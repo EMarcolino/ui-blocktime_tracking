@@ -20,7 +20,7 @@ export default function Modal() {
     function Cadastrar(evento) {
 
         evento.preventDefault();
-        axios.post('https://api-blocktimetracking.azurewebsites.net/Cadastrar/' + nomeEmpresa, {
+        axios.post('https://api-blocktimetracking.azurewebsites.net/Cadastrar/'.concat(nomeEmpresa), {
         }, {
         })
             .then(resposta => {
@@ -32,6 +32,7 @@ export default function Modal() {
             .catch(erro => console.log(erro), setInterval(() => {
             }, 500000));
 
+            return erro
     }
 
     return (

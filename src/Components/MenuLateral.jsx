@@ -38,6 +38,14 @@ export default function MenuLateral() {
                                 <span>Map. Empresa</span>
                             </div>
                         </Link>
+                        <Link to="/ListarEquipamentos">
+                            <div className="cardSec">
+                                <div>
+                                    <img src={noteLaranja} alt="" srcSet="" />
+                                </div>
+                                <span>Map. Equipamentos</span>
+                            </div>
+                        </Link>
                     </nav>
                 </div>
                 <nav className="navigatio2">

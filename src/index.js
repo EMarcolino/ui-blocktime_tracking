@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom';
 
 import './index.css';
-
 import Login from '../src/Pages/Login/Login.jsx';
 import NotFound from './Pages/NotFound/NotFound'
 import ListarEquipamentos from './Pages/ListarEquipamentos/ListarEquipamentos';

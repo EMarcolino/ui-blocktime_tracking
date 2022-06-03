@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../../Components/Modal.css";
+import "../../Components/modal2.css";
 import "../Empresas/Empresas.css"
 import MenuLateral from "../../Components/MenuLateral";
-import Modal from '../../Components/Modal';
 import verMapa from "../Assets/verMapa.svg";
-import deletar from "../Assets/Excluir.svg";
+import Deletar from "../Assets/Excluir.svg";
 import Editar from "../Assets/Editar.svg";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
@@ -15,8 +16,69 @@ export default function Empresas() {
 
     const [ListaEmpresas, atualizaListaEmpresas] = useState([])
     const [nomeEmpresa, atualizaNomeEmpresa] = useState('')
+    const [idEmpresa, atualizaIdEmpresa] = useState('')
     const [nomeEmpresaCadastrar, atualizaCadastro] = useState('')
     const [modalOpen, setModalOpen] = useState(false);
+    const [modal, setModal] = useState(false);
+    const [modal2, setModal2] = useState(false);
+    const [modal3, setModal3] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal);
+    };
+
+    const toggleModal2 = () => {
+        setModal2(!modal);
+    };
+
+    const toggleModal3 = () => {
+        setModal3(!modal);
+    };
+    if (modal) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
+    if (modal2) {
+        document.body.classList.add('active-modal2')
+    } else {
+        document.body.classList.remove('active-modal2')
+    }
+    if (modal3) {
+        document.body.classList.add('active-modal3')
+    } else {
+        document.body.classList.remove('active-modal3')
+    }
+
+    function deletar(idEmpresa) {
+        axios.delete('https://api-blocktimetracking.azurewebsites.net/api/Empresas/' + idEmpresa, {})
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log("bei")
+                    listarEmpresas();
+                }
+            })
+            .catch(erro => console.log(erro));
+
+            
+    }
+
+    function Cadastrar(evento) {
+        evento.preventDefault();
+        axios.post('https://api-blocktimetracking.azurewebsites.net/Cadastrar', {
+            nomeEmpresa : nomeEmpresa
+        }, {
+        })
+            .then(resposta => {
+                if (resposta.status === 201) {
+                    console.log('deubom');
+
+                }
+            })
+            .catch(erro => console.log(erro), setInterval(() => {
+            }, 500000));
+
+    }
 
     function listarEmpresas() {
         axios('https://api-blocktimetracking.azurewebsites.net/api/Empresas', {
@@ -28,7 +90,6 @@ export default function Empresas() {
             .catch(erro => console.log(erro));
 
     }
-
     useEffect(listarEmpresas, [])
 
     console.log(ListaEmpresas)
@@ -50,7 +111,32 @@ export default function Empresas() {
                             <div className='div-input'>
                                 <input className='input-pesq' type="text" placeholder='Pesquisar' />
                             </div>
-                            <Modal/>
+                            <button onClick={toggleModal2} className="btn-modal2">
+                                Nova Empresa
+                            </button>
+
+                            {modal2 && (
+                                <div className="modal2">
+                                    <div onClick={toggleModal2} className="overlay2"></div>
+                                    <div className="modal-content2">
+                                        <h2>Cadastrar Empresa</h2>
+                                        <form onSubmit={() => Cadastrar()}>
+                                            <input
+                                                id="nomeEmpresa"
+                                                name="nomeEmpresa"
+                                                value={nomeEmpresa}
+                                                onChange={(campo) => atualizaNomeEmpresa(campo.target.value)}
+                                                type="text" placeholder="Nome Empresa" />
+                                            <div className="btsModais2">
+                                                <button className="btnFim2" onClick={toggleModal2}>
+                                                    Cancelar
+                                                </button>
+                                                <button className="btnFim2" type="submit" onClick={toggleModal2}>Cadastrar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </section>
 
@@ -72,7 +158,26 @@ export default function Empresas() {
                                                     return (
                                                         <tr key={empresa.idEmpresa}>
                                                             <td className='essss'>{empresa.nomeEmpresa}</td>
-                                                            <td id='tdImagem'><img src={Editar} id="editar" /><img src={deletar} /></td>
+                                                            <td id='tdImagem'><img src={Editar} id="editar" /><a onClick={toggleModal}>
+                                                                <img src={Deletar}></img>
+                                                            </a>
+
+                                                                {modal && (
+                                                                    <div className="modal">
+                                                                        <div onClick={toggleModal} className="overlay"></div>
+                                                                        <div className="modal-content">
+                                                                            <h2>Deletar Empresa</h2>
+                                                                            <span>Deseja Excluir essa empresa?
+                                                                                essa ação não pode ser desfeita</span>
+                                                                            <div className="btsModais">
+                                                                                <button className="btnFim" onClick={toggleModal}>
+                                                                                    Cancelar
+                                                                                </button>
+                                                                                <button className="btnFim" onClick={deletar(empresa.idEmpresa), toggleModal}>Deletar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )}</td>
                                                             <td className='tdImagem'><img src={verMapa} /></td>
                                                         </tr>
                                                     );
@@ -95,7 +200,7 @@ export default function Empresas() {
                     </section>
                 </main>
             </div>
-            
+
             <Footer />
 
 
