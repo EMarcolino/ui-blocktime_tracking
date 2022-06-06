@@ -1,8 +1,8 @@
 import React from "react";
 import matheus from "../Pages/Assets/FotoPerfil.jpeg";
-import mapaBranco from "../Pages/Assets/MapIconWhite.svg";
+import mapaBranco from "../Pages/Assets/MapIconOrange.svg";
 import perfilLaranja from "../Pages/Assets/perfilBranco.svg";
-import noteLaranja from "../Pages/Assets/NoteIconOrange.svg";
+import noteLaranja from "../Pages/Assets/NoteIconWhite.svg";
 import InterLaranja from "../Pages/Assets/InterIconOrange.svg";
 import sairLaranja from "../Pages/Assets/icon-sair.svg";
 import Empresas from '../Pages/Empresas/Empresas.jsx';
@@ -19,7 +19,7 @@ export default function MenuLateral() {
                 <div className="partcima">
                     <nav className="navigationPainel">
                         <Link to="/MapaEquipamento">
-                            <div className="cardSec selecionado">
+                            <div className="cardSec">
                                 <div>
                                     <img src={mapaBranco} alt="" srcSet="" />
                                 </div>
@@ -35,7 +35,7 @@ export default function MenuLateral() {
                             </div>
                         </Link>
                         <Link to="/ListarEquipamentos">
-                            <div className="cardSec">
+                            <div className="cardSec selecionado">
                                 <div>
                                     <img src={noteLaranja} alt="" srcSet="" />
                                 </div>

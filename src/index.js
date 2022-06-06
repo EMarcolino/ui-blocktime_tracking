@@ -10,7 +10,7 @@ import {
 import './index.css';
 import Login from '../src/Pages/Login/Login.jsx';
 import NotFound from './Pages/NotFound/NotFound'
-import ListarEquipamentos from './Pages/ListarEquipamentos/ListarEquipamentos';
+import ListarEquipamentos from './Pages/ListarEquipamentos/ListarEquipamentos.jsx';
 import Empresas from './Pages/Empresas/Empresas.jsx';
 import MapaEquipamento from './Pages/MapaDeEquip/index';
 import reportWebVitals from './reportWebVitals';
@@ -28,7 +28,8 @@ const routing = (
             /> 
             <Route path="/MapaEquipamento"
                 element={< MapaEquipamento />}
-            /> <Route path="/ListarEquipamentos"
+            /> 
+            <Route path="/ListarEquipamentos"
                 element={< ListarEquipamentos />}
             /> 
             <Route path="/Empresas"
@@ -43,7 +44,6 @@ const routing = (
             element={< Navigate to="/NotFound"
                     replace />}
             />
-
             </Routes> 
     </div> 
 </BrowserRouter>

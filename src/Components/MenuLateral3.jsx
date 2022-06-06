@@ -1,9 +1,10 @@
 import React from "react";
 import matheus from "../Pages/Assets/FotoPerfil.jpeg";
 import mapaBranco from "../Pages/Assets/MapIconWhite.svg";
+import mapaLaranja from "../Pages/Assets/MapIconOrange.svg";
 import perfilLaranja from "../Pages/Assets/perfilBranco.svg";
 import noteLaranja from "../Pages/Assets/NoteIconOrange.svg";
-import InterLaranja from "../Pages/Assets/InterIconOrange.svg";
+import InterLaranja from "../Pages/Assets/InterIconWhite.svg";
 import sairLaranja from "../Pages/Assets/icon-sair.svg";
 import Empresas from '../Pages/Empresas/Empresas.jsx';
 import { Link } from "react-router-dom";
@@ -19,15 +20,15 @@ export default function MenuLateral() {
                 <div className="partcima">
                     <nav className="navigationPainel">
                         <Link to="/MapaEquipamento">
-                            <div className="cardSec selecionado">
+                            <div className="cardSec">
                                 <div>
-                                    <img src={mapaBranco} alt="" srcSet="" />
+                                    <img src={mapaLaranja} alt="" srcSet="" />
                                 </div>
                                 <span>Map. Geral</span>
                             </div>
                         </Link>
                         <Link to="/Empresas">
-                            <div className="cardSec">
+                            <div className="cardSec selecionado">
                                 <div>
                                     <img src={InterLaranja} alt="" srcSet="" />
                                 </div>

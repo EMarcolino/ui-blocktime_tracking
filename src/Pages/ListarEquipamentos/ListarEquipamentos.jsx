@@ -3,7 +3,7 @@ import axios from 'axios';
 import "../../Components/Modal.css";
 import "../../Components/modal2.css";
 import "../ListarEquipamentos/ListarEquipamentos.css"
-import MenuLateral from "../../Components/MenuLateral";
+import MenuLateral from "../../Components/MenuLateral2";
 import verMapa from "../Assets/verMapa.svg";
 import Deletar from "../Assets/Excluir.svg";
 import Editar from "../Assets/Editar.svg";
@@ -23,6 +23,7 @@ export default function Equipamentos() {
     const [modal2, setModal2] = useState(false);
     const [modal3, setModal3] = useState(false);
 
+    
     const toggleModal = () => {
         setModal(!modal);
     };
@@ -99,7 +100,6 @@ export default function Equipamentos() {
             <Header />
             <div className='div-container'>
                 <MenuLateral className="altura">
-
                 </MenuLateral>
                 <main className='main-content'>
                     <section className='sec-new-company'>
@@ -108,9 +108,6 @@ export default function Equipamentos() {
                         </div>
 
                         <div className='div-sheare-new-company'>
-                            <div className='div-input'>
-                                <input className='input-pesq' type="text" placeholder='Pesquisar' />
-                            </div>
                             <button onClick={toggleModal2} className="btn-modal2">
                                 Novo Equipamento
                             </button>
@@ -150,7 +147,8 @@ export default function Equipamentos() {
                                                 <th className='cabec-Equipamento'>Nome</th>
                                                 <th className='cabec-Equipamento'>Código Equipamento</th>
                                                 <th className='cabec-Equipamento'>Empresa</th>
-                                                <th className='cabec-Equipamento'>Editar Equipamento</th>
+                                                <th className='cabec-Equipamento'>Última Atualização</th>
+                                                <th className='cabec-Equipamento'>Excluir Equipamento</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -161,7 +159,8 @@ export default function Equipamentos() {
                                                             <td className='essss'>{Equipamento.nomeNotebook}</td>
                                                             <td className='essss'>{Equipamento.idEquipamento}</td>
                                                             <td className='essss'>{Equipamento.idEmpresaNavigation.nomeEmpresa}</td>
-                                                            <td id='tdImagem'><img src={Editar} id="editar" /><a onClick={toggleModal}>
+                                                            <td className='essss'>{Equipamento.ultimaAtt.replace('T' , ' | ')}</td>
+                                                            <td id='tdImagem'><a onClick={toggleModal}>
                                                                 <img src={Deletar}></img>
                                                             </a>
 
@@ -188,14 +187,6 @@ export default function Equipamentos() {
                                         </tbody>
                                     </table>
 
-                                </div>
-
-                                <div className='lid '>
-                                    <div className='tabela-lista-corpo '>
-
-                                    </div>
-                                </div>
-                                <div className='container-pagination'>
                                 </div>
                             </div>
                         </div>

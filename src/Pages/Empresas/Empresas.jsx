@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ListItem } from 'css-tree';
 import "../../Components/Modal.css";
 import "../../Components/modal2.css";
+import "../../Components/modal3.css";
 import "../Empresas/Empresas.css"
-import MenuLateral from "../../Components/MenuLateral";
+import MenuLateral from "../../Components/MenuLateral3";
 import verMapa from "../Assets/verMapa.svg";
 import Deletar from "../Assets/Excluir.svg";
 import Editar from "../Assets/Editar.svg";
@@ -14,6 +16,7 @@ import Footer from "../../Components/Footer";
 
 export default function Empresas() {
 
+    const [ListaEquipamentos, atualizaListaEquipamentos] = useState([])
     const [ListaEmpresas, atualizaListaEmpresas] = useState([])
     const [nomeEmpresa, atualizaNomeEmpresa] = useState('')
     const [idEmpresa, atualizaIdEmpresa] = useState('')
@@ -32,7 +35,7 @@ export default function Empresas() {
     };
 
     const toggleModal3 = () => {
-        setModal3(!modal);
+        setModal3(!modal3);
     };
     if (modal) {
         document.body.classList.add('active-modal')
@@ -60,13 +63,26 @@ export default function Empresas() {
             })
             .catch(erro => console.log(erro));
 
-            
+
+    }
+
+    function listarEquipamentos(key) {
+
+        var empresa = ListaEmpresas[key]
+        console.log('https://api-blocktimetracking.azurewebsites.net/api/Equipamentos/' + empresa.idEmpresa)
+        axios('https://api-blocktimetracking.azurewebsites.net/api/Equipamentos/' + empresa.idEmpresa, {
+        }).then(resposta => {
+            if (resposta.status === 200) {
+                atualizaListaEquipamentos(resposta.data)
+            }
+        })
+            .catch(erro => console.log(erro));
     }
 
     function Cadastrar(evento) {
         evento.preventDefault();
         axios.post('https://api-blocktimetracking.azurewebsites.net/Cadastrar', {
-            nomeEmpresa : nomeEmpresa
+            nomeEmpresa: nomeEmpresa
         }, {
         })
             .then(resposta => {
@@ -108,9 +124,6 @@ export default function Empresas() {
                         </div>
 
                         <div className='div-sheare-new-company'>
-                            <div className='div-input'>
-                                <input className='input-pesq' type="text" placeholder='Pesquisar' />
-                            </div>
                             <button onClick={toggleModal2} className="btn-modal2">
                                 Nova Empresa
                             </button>
@@ -149,15 +162,52 @@ export default function Empresas() {
                                             <tr className='i'>
                                                 <th className='cabec-empresa'>Nome</th>
                                                 <th className='cabec-empresa'>Editar Empresa</th>
-                                                <th className='cabec-empresa ver-map' id='teste'>Ver no Mapa</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {
-                                                ListaEmpresas.map((empresa) => {
+                                                ListaEmpresas.map((empresa, key) => {
                                                     return (
-                                                        <tr key={empresa.idEmpresa}>
-                                                            <td className='essss'>{empresa.nomeEmpresa}</td>
+                                                        <tr key={empresa.idEmpresa} >
+                                                            <td className='essss' >{empresa.nomeEmpresa}
+                                                                {modal3 && (
+                                                                    <div className="modal3">
+                                                                        <div key={empresa.idEmpresa} onClick={toggleModal3} className="overlay3"></div>
+                                                                        <div className="modal-content3">
+                                                                            <h2>Equipamentos</h2>
+                                                                            <table>
+                                                                                <thead>
+                                                                                    <tr className='i'>
+                                                                                        <th className='cabec-Equipamento'>Nome</th>
+                                                                                        <th className='cabec-Equipamento'>Código Equipamento</th>
+                                                                                        <th className='cabec-Equipamento'>Empresa</th>
+                                                                                        <th className='cabec-Equipamento'>Última Atualização</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    {
+                                                                                        ListaEquipamentos.map((Equipamento) => {
+                                                                                            return (
+                                                                                                <tr key={Equipamento.idEquipamento}>
+                                                                                                    <td className='essss'>{Equipamento.nomeNotebook}</td>
+                                                                                                    <td className='essss'>{Equipamento.idEquipamento}</td>
+                                                                                                    <td className='essss'>{Equipamento.idEmpresaNavigation.nomeEmpresa}</td>
+                                                                                                    <td className='essss'>{Equipamento.ultimaAtt.replace('T', ' | ')}</td>
+                                                                                                </tr>
+                                                                                            );
+                                                                                        })
+                                                                                    }
+                                                                                </tbody>
+                                                                            </table>
+                                                                            <div className="btsModais3">
+                                                                                <button className="btnFim3" onClick={toggleModal3}>
+                                                                                    Cancelar
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+                                                            </td>
                                                             <td id='tdImagem'><img src={Editar} id="editar" /><a onClick={toggleModal}>
                                                                 <img src={Deletar}></img>
                                                             </a>
@@ -178,9 +228,8 @@ export default function Empresas() {
                                                                         </div>
                                                                     </div>
                                                                 )}</td>
-                                                            <td className='tdImagem'><img src={verMapa} /></td>
                                                         </tr>
-                                                    );
+                                                )      
                                                 })
                                             }
                                         </tbody>
