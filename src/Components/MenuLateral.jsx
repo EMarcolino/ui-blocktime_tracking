@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 // import verNoMapa from "../Pages/Assets/verMapa.svg";
 
 export default function MenuLateral() {
-  return (
+    return (
         <aside id="mn" className="PainelAdmin">
             <div className="PrinAside">
                 <div className="partcima">
@@ -60,6 +60,6 @@ export default function MenuLateral() {
                 </nav>
             </div>
         </aside>
-  );
+    );
 }
 

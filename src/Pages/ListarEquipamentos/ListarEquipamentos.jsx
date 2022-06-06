@@ -149,8 +149,8 @@ export default function Equipamentos() {
                                             <tr className='i'>
                                                 <th className='cabec-Equipamento'>Nome</th>
                                                 <th className='cabec-Equipamento'>Código Equipamento</th>
+                                                <th className='cabec-Equipamento'>Empresa</th>
                                                 <th className='cabec-Equipamento'>Editar Equipamento</th>
-                                                <th className='cabec-Equipamento ver-map' id='teste'>Ver no Mapa</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -160,6 +160,7 @@ export default function Equipamentos() {
                                                         <tr key={Equipamento.idEquipamento}>
                                                             <td className='essss'>{Equipamento.nomeNotebook}</td>
                                                             <td className='essss'>{Equipamento.idEquipamento}</td>
+                                                            <td className='essss'>{Equipamento.idEmpresaNavigation.nomeEmpresa}</td>
                                                             <td id='tdImagem'><img src={Editar} id="editar" /><a onClick={toggleModal}>
                                                                 <img src={Deletar}></img>
                                                             </a>
@@ -180,7 +181,6 @@ export default function Equipamentos() {
                                                                         </div>
                                                                     </div>
                                                                 )}</td>
-                                                            <td className='tdImagem'><img src={verMapa} /></td>
                                                         </tr>
                                                     );
                                                 })
