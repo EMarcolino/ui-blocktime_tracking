@@ -122,35 +122,6 @@ export default function Empresas() {
                         <div className='div-title'>
                             <h1 className='title'>Empresas</h1>
                         </div>
-
-                        <div className='div-sheare-new-company'>
-                            <button onClick={toggleModal2} className="btn-modal2">
-                                Nova Empresa
-                            </button>
-
-                            {modal2 && (
-                                <div className="modal2">
-                                    <div onClick={toggleModal2} className="overlay2"></div>
-                                    <div className="modal-content2">
-                                        <h2>Cadastrar Empresa</h2>
-                                        <form onSubmit={() => Cadastrar()}>
-                                            <input
-                                                id="nomeEmpresa"
-                                                name="nomeEmpresa"
-                                                value={nomeEmpresa}
-                                                onChange={(campo) => atualizaNomeEmpresa(campo.target.value)}
-                                                type="text" placeholder="Nome Empresa" />
-                                            <div className="btsModais2">
-                                                <button className="btnFim2" onClick={toggleModal2}>
-                                                    Cancelar
-                                                </button>
-                                                <button className="btnFim2" type="submit" onClick={toggleModal2}>Cadastrar</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
                     </section>
 
                     <section className='sec-list'>
@@ -161,7 +132,7 @@ export default function Empresas() {
                                         <thead>
                                             <tr className='i'>
                                                 <th className='cabec-empresa'>Nome</th>
-                                                <th className='cabec-empresa'>Editar Empresa</th>
+                                                <th className='cabec-empresa'>Excluir Empresa</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -208,7 +179,7 @@ export default function Empresas() {
                                                                     </div>
                                                                 )}
                                                             </td>
-                                                            <td id='tdImagem'><img src={Editar} id="editar" /><a onClick={toggleModal}>
+                                                            <td id='tdImagem'><a onClick={toggleModal}>
                                                                 <img src={Deletar}></img>
                                                             </a>
 

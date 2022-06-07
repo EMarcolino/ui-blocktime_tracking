@@ -107,34 +107,6 @@ export default function Equipamentos() {
                             <h1 className='title'>Equipamentos</h1>
                         </div>
 
-                        <div className='div-sheare-new-company'>
-                            <button onClick={toggleModal2} className="btn-modal2">
-                                Novo Equipamento
-                            </button>
-
-                            {modal2 && (
-                                <div className="modal2">
-                                    <div onClick={toggleModal2} className="overlay2"></div>
-                                    <div className="modal-content2">
-                                        <h2>Cadastrar Equipamento</h2>
-                                        <form onSubmit={() => Cadastrar()}>
-                                            <input
-                                                id="nomeEquipamento"
-                                                name="nomeEquipamento"
-                                                value={nomeEquipamento}
-                                                onChange={(campo) => atualizaNomeEquipamento(campo.target.value)}
-                                                type="text" placeholder="Nome Equipamento" />
-                                            <div className="btsModais2">
-                                                <button className="btnFim2" onClick={toggleModal2}>
-                                                    Cancelar
-                                                </button>
-                                                <button className="btnFim2" type="submit" onClick={toggleModal2}>Cadastrar</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
                     </section>
 
                     <section className='sec-list'>
